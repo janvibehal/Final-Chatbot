@@ -59,7 +59,15 @@ const App = () => {
               onClick={() => setCurrentSession(s)}
             >
               <span>{s.name}</span>
-              <span className="delete" onClick={(e) => { e.stopPropagation(); deleteSession(s._id); }}>✖</span>
+              <span
+                className="delete"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteSession(s._id);
+                }}
+              >
+                ✖
+              </span>
             </li>
           ))}
         </ul>

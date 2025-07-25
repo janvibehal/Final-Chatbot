@@ -11,7 +11,7 @@ const ChatWindow = ({ session }) => {
 
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`http://localhost:6001/api/chat/messages/${session._id}`);
+        const res = await axios.get(`https://final-chatbot-i392.onrender.com/api/chat/messages/${session._id}`);
         setMessages(res.data || []);
       } catch (err) {
         console.error('Failed to fetch messages:', err);
@@ -28,15 +28,14 @@ const ChatWindow = ({ session }) => {
     const userMessage = { role: 'user', content: input };
 
     try {
-      await axios.post('http://localhost:6001/api/chat/message', {
+      await axios.post('https://final-chatbot-i392.onrender.com/api/chat/message', {
         sessionId: session._id,
         ...userMessage
       });
 
       setInput('');
-      // Refetch messages after short delay
       setTimeout(async () => {
-        const res = await axios.get(`http://localhost:6001/api/chat/messages/${session._id}`);
+        const res = await axios.get(`https://final-chatbot-i392.onrender.com/api/chat/messages/${session._id}`);
         setMessages(res.data || []);
         setLoading(false);
       }, 1500);
